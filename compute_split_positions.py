@@ -1,4 +1,10 @@
 #!/bin/python
+
+# This python script aims to compute the split positon for the contig
+# whose size is over a certain threshold based on annotation records.
+# In the end, one text file will be written consisting of three fields:
+# segment name, start position and end postion
+
 import argparse
 import pandas as pd
 import numpy as np
@@ -39,6 +45,7 @@ def search_max_gap(df_ann):
 	
 	return gap_range
 
+
 def compute_split_position(seqsize, sizeLimit, f_ann):
 
 	df_ann = pd.read_csv(f_ann, sep="\t", header=None)
@@ -64,6 +71,7 @@ def compute_split_position(seqsize, sizeLimit, f_ann):
 		lines.append([seqname+'_'+str(i), split_position])
 	return pd.DataFrame(lines)
 
+
 def main(args):
 	seqsize=int(args.seqsize)
 	sizeLimit=int(args.threshold)
@@ -86,7 +94,7 @@ def main(args):
 	# add last segment to the last line
 	df_seg_range=df_split_pos.append(pd.Series(last_seg, index=df_split_pos.columns), ignore_index=True)
 	
-	# ouput the segment names, start and end postions to a csv format file
+	# output the segment names, start and end postions to a csv format file
 	df_seg_range.to_csv(args.outdir, sep="\t", header=None, index=None)
     
 
