@@ -34,7 +34,7 @@ Mandatory arguments: sequence file (FASTA/FA), annotaions (GTF/GFF)
 Options: size limitation, output directory, keep intermediate file or not
 
 
-## Processing deatails
+## Processing details
 1. Find contigs whose size exceeds size limitation, index FASTA -> FAI;
 2. Nail down the segmentation positions,
  for every contig:
