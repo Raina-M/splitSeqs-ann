@@ -23,7 +23,7 @@ options:
 ```
 
 ## Dependencies
-samtool (not required is index of sequences, i.e., `.fai` file, exists)
+samtools (not required if index of sequences, i.e., `.fai` file, exists)
 
 python 2.7+
 
